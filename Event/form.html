@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Jogo do Galo</title>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <div class="formulario">
+      <h1>Formulário</h1>
+      <form name="pesquisa" action="http://www.google.com/search">
+        <input
+          type="text"
+          name="q"
+          placeholder="Palavras a
+pesquisar..."
+        />
+        <select name="hl">
+          <option value="pt-pt">Português</option>
+          <option value="en-us">Inglês</option>
+        </select>
+        <button submit>Pesquisar</button>
+      </form>
+    </div>
+    <script>
+      const form = document.forms[0];
+      form.onsubmit = function (e) {
+        e.preventDefault();
+        const form = e.target;
+        const formData = new FormData(form);
+        console.log(formData.get("q"));
+        console.log(formData.has("hl"));
+        for (let dado of formData) {
+          console.log(dado);
+        }
+      };
+    </script>
+  </body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Selecionar elementos 1</title>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <div class="primeiro" id="primeiro">Primeiro</div>
+    <div id="segundo"><p>Segundo</p></div>
+    <div class="terceiro">Terceiro</div>
+    <div class="primeiro terceiro">Outro terceiro</div>
+
+    <div class="formulario">
+      <h1>Formulário</h1>
+      <form name="pesquisa" action="http://www.google.com/search">
+        <input type="text" name="q" placeholder="Palavras a pesquisar..." />
+        <select name="hl">
+          <option value="pt-pt">Português</option>
+          <option value="en-us">Inglês</option>
+        </select>
+        <button>Pesquisar</button>
+      </form>
+    </div>
+
+    <script>
+      /* const primeiroElemento = document.getElementById('primeirox');
+        console.log('primeiroElemento',primeiroElemento);
+        if (primeiroElemento) {
+            primeiroElemento.classList.add('destaque');
+        } */
+      document.getElementById("primeiro").classList.add("destaque");
+      console.log("Adicionou a class destaque ao elemento");
+
+      const divs = document.getElementsByTagName("div");
+      const divsArray = [...divs];
+      divsArray.forEach((e) => e.classList.add("destaque"));
+
+      const terceiros = document.getElementsByClassName("terceiro");
+      for (let e of terceiros) {
+        e.classList.remove("destaque");
+      }
+
+      document.querySelector("#primeiro").classList.remove("destaque");
+
+      const divsQuery = document.querySelectorAll("div");
+      divsQuery.forEach((e) => e.classList.add("destaque"));
+
+      const deselecionar = (seletor) => {
+        const elementos = document.querySelectorAll(seletor);
+        elementos.forEach((e) => e.classList.remove("destaque"));
+      };
+
+      const selecionar = (seletor) => {
+        const elementos = document.querySelectorAll(seletor);
+        elementos.forEach((e) => e.classList.add("destaque"));
+      };
+
+      deselecionar("*");
+      selecionar("div");
+    </script>
+  </body>
+</html>

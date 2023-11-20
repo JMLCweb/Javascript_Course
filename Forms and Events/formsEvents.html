@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Evento2</title>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <form action="">
+      <input type="text" id="nome" placeholder="Username" />
+      <input type="submit" value="Enviar" />
+      <div></div>
+    </form>
+    <script>
+      const form = document.querySelector("form");
+      const div = document.querySelector("div");
+      // Letras minusculas e números entre 6 a 10
+      const patternNome = /^[a-z0-9]{6,10}$/; // Expressão regular
+      // const patternNome = /^([a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6})*$/;
+
+      // O evento é na form e não no clique do botão!
+      form.addEventListener("submit", (e) => {
+        // Parar a execução normal que seria definida no action da form e.preventDefault();
+        // Notação mais simples.. pode ser pelo id ou pelo name
+        e.preventDefault();
+        console.log(form.nome.value);
+        if (patternNome.test(form.nome.value)) {
+          console.log((div.innerText = "Nome válido"));
+        } else {
+          console.log(
+            (div.innerText =
+              "O nome tem de ter apenas letras e número entre 6 a 10")
+          );
+        }
+      });
+      // validação no keyup
+      form.nome.addEventListener("keyup", (e) => {
+        console.log(e.target);
+        if (patternNome.test(e.target.value)) {
+          e.target.setAttribute("class", "success");
+        } else {
+          e.target.setAttribute("class", "error");
+        }
+      });
+    </script>
+  </body>
+</html>

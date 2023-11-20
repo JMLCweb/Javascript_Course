@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Selecionar elementos 1</title>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <div class="primeiro" id="primeiro">
+      <a href="http://www.flag.pt">FLAG</a><br />
+      <label for="compras">Compras</label>
+      <ul id="compras" destino="escritorio" data-urgencia="5">
+        <li>Café</li>
+        <li>Água</li>
+        <li>Copos</li>
+      </ul>
+    </div>
+    <div id="segundo">
+      <ul>
+        <li>Pedro</li>
+        <li>Angela</li>
+        <li>Rui</li>
+      </ul>
+      <img src="images/flag.png" alt="Logotipo da FLAG" />
+    </div>
+    <div class="terceiro">Terceiro</div>
+    <div class="primeiro terceiro">Outro terceiro</div>
+
+    <div class="formulario">
+      <h1>Formulário</h1>
+      <form name="pesquisa" action="http://www.google.com/search">
+        <input
+          type="text"
+          name="q"
+          placeholder="Palavras a
+pesquisar..."
+        />
+        <select name="hl">
+          <option value="pt-pt">Português</option>
+          <option value="en-us">Inglês</option>
+        </select>
+        <button>Pesquisar</button>
+      </form>
+    </div>
+    <div class="classes">Classes</div>
+    <!--     <script>
+      // Selecionar elementos por tag
+      const divs = document.getElementsByTagName("div");
+
+      // Spread
+      const divsArray = [...divs];
+      divsArray.forEach((e) => e.classList.add("destaque"));
+
+      // Selecionar elementos por class
+      const terceiroElementos = document.getElementsByClassName("terceiro");
+      for (let e of terceiroElementos) e.classList.remove("destaque");
+
+      // Selecionar elementos
+      //Não estão disponiveis outros métodos dos Arrays
+      document
+        .querySelectorAll("div")
+        .forEach((e) => e.classList.add("destaque")); // zzz nao ativo
+
+      //Criar funções genéricas para aplicar o add ou o remove por
+      argumento;
+      const selecionar = (seletor) =>
+        document
+          .querySelectorAll(seletor)
+          .forEach((e) => e.classList.add("destaque"));
+      const deselecionar = (seletor) =>
+        document
+          .querySelectorAll(seletor)
+          .forEach((e) => e.classList.remove("destaque"));
+      //Deselecionar todos
+      deselecionar("*");
+
+      //Selecionar todos os divs
+      selecionar("div");
+      deselecionar("*");
+      //Selecionar class terceiro
+      selecionar(".terceiro");
+      deselecionar("*");
+      //Selecionar class terceiro e primeiro
+      selecionar(".terceiro.primeiro");
+      deselecionar("*");
+    </script>
+    <script></script> -->
+    <!-- <script>
+      /*       const primeiroElemento = document.getElementById("primeirox");
+        if (primeiroElemento) {
+          primeiroElemento.classList.add("destaque");
+        } */
+      document.getElementById("primeiro").classList.add("destaque");
+      console.log("Adicionou a class destaque ao elemento");
+
+      const divs = document.getElementsByTagName("divs");
+      const divsArray = [...divs];
+      divsArray.forEach((e) => e.classList.add("destaque"));
+
+      // apanhar elementos com class terceiro e remover class destaque
+      const terceiros = document.getElementsByTagName("terceiro");
+      for (let e of terceiros) {
+        e.classList.remove("destaque");
+      }
+      // tirar destaque no primeiro
+      document.querySelector("#primeiro").classList.remove("destaque");
+      // adicionar destaque a todas as div
+      const divsQuery = document.querySelectorAll("div");
+      divsQuery.forEach((e) => e.classList.add("destaque"));
+      // funçoes genericas
+      const selecionar = (seletor) =>
+        document
+          .querySelectorAll(seletor)
+          .forEach((e) => e.classList.add("destaque"));
+      const deselecionar = (seletor) =>
+        document
+          .querySelectorAll(seletor)
+          .forEach((e) => e.classList.remove("destaque"));
+      deselecionar("*");
+      selecionar("div");
+    </script> -->
+  </body>
+</html>

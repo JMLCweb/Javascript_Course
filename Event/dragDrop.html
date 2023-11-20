@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Drag and Drop</title>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="esquerda" dropzone>
+        <div class="item">JMLC</div>
+        <div class="item">Web</div>
+        <div class="item">3</div>
+        <div class="item">4</div>
+      </div>
+      <div class="direita" dropzone></div>
+    </div>
+    <!-- drag and Drop necessita de IDs -->
+    <script>
+      const items = document.querySelectorAll("[dropzone] .item");
+      console.log(items);
+      items.forEach((item, index) => {
+        item.draggable = true;
+        item.id = item.id || `draggable-item-${index}`;
+        item.ondragstart = (e) =>
+          e.dataTransfer.setData("item-id", e.target.id);
+      });
+
+      const dropzones = document.querySelectorAll("[dropzone]");
+      dropzones.forEach((dropzone) => {
+        dropzone.ondragover = (e) => e.preventDefault();
+        dropzone.ondrop = function (e) {
+          const id = e.dataTransfer.getData("item-id");
+          const item = document.getElementById(id);
+          dropzone.appendChild(item);
+          //e.target.appendChild(item);
+        };
+      });
+    </script>
+  </body>
+</html>

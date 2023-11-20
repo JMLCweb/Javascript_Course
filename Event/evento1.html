@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="pt">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Evento1</title>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <div id="primeiro">
+      <!-- onclick="navegarEm5s(event)" -->
+      <a href="http://www.google.com">GOOGLE</a>
+    </div>
+
+    <script>
+      function navegarEm5s(e) {
+        e.preventDefault(); //ignora a ação normal do clique e de navegar console.log('A navegar em 5 segundos....');
+        setTimeout(() => {
+          const link = e.target; //console.log(e); //console.log(link); window.location.href = link.href;
+        }, 5000);
+      }
+
+      const a = document.querySelector("a");
+      a.onclick = navegarEm5s;
+    </script>
+  </body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="pt">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Jogo do Galo</title>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <div mover id="primeiro" class="destaque">Mover</div>
+    <script>
+      const item = document.querySelector("[mover]");
+      item.style.position = "absolute";
+      item.onmousemove = (e) => {
+        const item = e.target;
+        item.style.cursor = "move";
+        if (e.buttons) {
+          item.style.top = `${e.clientY - item.clientHeight / 2}px`; // divisão por dois para ir para o meio
+          item.style.left = `${e.clientX - item.clientWidth / 2}px`;
+        }
+      };
+    </script>
+  </body>
+</html>

@@ -1,0 +1,41 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
+      integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <title>Todo List</title>
+  </head>
+  <script>
+    localStorage.setItem("nome", "Jmlc");
+    localStorage.setItem("idade", "29");
+    const nome = localStorage.getItem("nome");
+    const idade = localStorage.getItem("idade");
+    console.log(nome, idade);
+
+    // Local Storage só aceita strings
+    const formandos = [
+      { nome: "Rui", idade: 20 },
+      { nome: "Joana", idade: 25 },
+      { nome: "Raquel", idade: 25 },
+    ];
+    console.log(JSON.stringify(formandos)); //Obtemos a string
+    const formandosString = JSON.stringify(formandos);
+    localStorage.setItem("formandos", formandosString);
+
+    const formandosParse = JSON.parse(localStorage.getItem("formandos"));
+    console.log(formandosParse);
+  </script>
+</html>
