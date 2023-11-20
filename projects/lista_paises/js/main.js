@@ -13,13 +13,38 @@ const html = {
   },
 };
 
-var countriesList = [];
-var inicial = 1;
-var final = 20;
+const buildPagination = (totalPages) => {
+  var numPagination = "";
+  for (let i = 1; i <= totalPages; i++) {
+    numPagination += `
+<span>${i}</span>
+`;
+  }
+  numeros.innerHTML = numPagination;
+  console.log(numPagination);
+};
 
-const buildCountries = (countries) => {
+var countriesList = [];
+const offset = 13;
+
+const numeros = document.querySelector("#pagination");
+
+numeros.addEventListener("click", (e) => {
+  if (e.target.tagName == "SPAN") {
+    console.log(e.target.innerText);
+    document.querySelector("tbody").innerHTML = buildCountries(
+      countriesList,
+      e.target.innerText
+    );
+  }
+});
+
+const buildCountries = (countries, pagina = 1) => {
   var paises = "";
-  for (let i = inicial - 1; i < final; i++) {
+  const inicial = (pagina - 1) * offset + 1;
+  const final = pagina * offset;
+
+  for (let i = inicial - 1; i < final && i < countriesList.length; i++) {
     paises += `
           <tr>
             <th scope="row">${i + 1}</th>
@@ -35,10 +60,23 @@ const buildCountries = (countries) => {
 
 paises()
   .then((data) => {
+    countriesList = [...data];
     document.querySelector("tbody").innerHTML = buildCountries(data);
     document.querySelector(".loader").classList.toggle("hide");
     document.querySelector(".countries").classList.toggle("hide");
-    countriesList = [...data];
+
+    // Distribuir array por paginas
+    // pag 1
+    // offset = 20
+    // inicial = 1 ((pagina atual - 1) * offset) + 1 -1
+    // final = 20 (pagina * offset)
+    // pag 2
+    // inicial = 21 ((pagina atual - 1) * offset) + 1 - 21
+    // final = 40
+    // pag 3
+    // inicial = 41 ((pagina atual - 1) * offset) + 1 - 41
+    const paginas = Math.ceil(countriesList.length / offset);
+    buildPagination(paginas);
   })
   .catch((err) => console.log("Surgiu um erro:", err.message));
 
@@ -47,47 +85,5 @@ sortCountries.addEventListener("click", (e) => {
   countriesList.sort((a, b) => (a.name.common > b.name.common ? 1 : -1));
   document.querySelector("tbody").innerHTML = buildCountries(countriesList);
 });
-
-// Paginação e controlos
-const paginationNext = document.querySelector("#SEGUINTE");
-const paginationPrev = document.querySelector("#anterior");
-
-// Objecto que guarda a paginação da lista
-const state = {
-  page: 1,
-  totalPages: 12, // Math.ceil(countries.length / 20)
-};
-// Funçao para mostrar pagina atual
-function update() {
-  console.log(state.page);
-}
-// Logica de controlos
-const controls = {
-  next() {
-    const lastPage = state.page > state.totalPages;
-    state.page++;
-    if (lastPage) {
-      state.page--;
-    }
-  },
-  prev() {
-    state.page--;
-    if (state.page < 1) {
-      state.page++;
-    }
-  },
-  createListeners() {
-    paginationNext.addEventListener("click", () => {
-      controls.next();
-      update();
-    });
-    paginationPrev.addEventListener("click", () => {
-      controls.prev();
-      update();
-    });
-  },
-};
-console.log(state.page);
-controls.createListeners();
-
-// FIM
+const celula = document.querySelectorAll("td");
+console.log(celula);
