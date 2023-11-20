@@ -1,15 +1,35 @@
+body {
+  background-color: beige;
+}
 .hide {
-    display: none;
+  display: none;
 }
 
 .loader {
-    width: 800px;
-    height: 600px;
-    margin: auto;
-    background-image: url("../images/loader.gif");
-    background-repeat: no-repeat;
-  }
+  width: 800px;
+  height: 600px;
+  margin: auto;
+  background-image: url("../images/loader.gif");
+  background-repeat: no-repeat;
+}
 
 #sort {
-    cursor: pointer;
+  cursor: pointer;
+}
+
+#SEGUINTE {
+  border: solid black 5px;
+  padding: 5px;
+  margin: 10px;
+  background-color: black;
+  color: white;
+  border-radius: 10px;
+}
+#anterior {
+  border: solid black 5px;
+  padding: 5px;
+  margin: 10px;
+  background-color: black;
+  color: white;
+  border-radius: 10px;
 }
